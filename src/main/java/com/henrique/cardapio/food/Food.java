@@ -22,4 +22,10 @@ public class Food {
     private String image;
     private Double price;
 
+    // Create a constructor to work with FoodRequestDTO
+    public Food(FoodRequestDTO data){
+        this.image = data.image();
+        this.price = data.price();
+        this.title = data.title();
+    }
 }

@@ -1,6 +1,7 @@
 package com.henrique.cardapio.controller;
 
 import com.henrique.cardapio.food.Food;
+import com.henrique.cardapio.food.FoodRequestDTO;
 import com.henrique.cardapio.food.FoodResponseDTO;
 import com.henrique.cardapio.food.IFoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,12 @@ public class FoodController {
     @Autowired // Indicates to Spring that it will manage the processes of the FoodController class
     private IFoodRepository repository;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*") // Allows requests from any origin with any headers (CORS configuration).
     @PostMapping()
     public void saveFood(@RequestBody FoodRequestDTO data){
-
+        Food foodData = new Food(data); // Transforms the FoodRequestDTO into the entity
+        repository.save(foodData);
+        return;
     }
 
     @GetMapping // Endpoint of this method
