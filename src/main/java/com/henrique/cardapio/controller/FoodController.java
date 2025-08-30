@@ -17,7 +17,8 @@ public class FoodController {
     private IFoodRepository repository;
 
     @GetMapping // Endpoint of this method
-    public void getAll(){ // Method to return all foods registered in the database
-        List<Food> foodList = repository; // Creates a list that will be used to query food by id
+    public List<Food> getAll(){ // Method to return all foods registered in the database
+        List<Food> foodList = repository.findAll(); // Creates a list that will be used to query food by id
+        return foodList;
     }
 }
