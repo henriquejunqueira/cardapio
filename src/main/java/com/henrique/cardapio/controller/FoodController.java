@@ -17,7 +17,9 @@ public class FoodController {
     @Autowired // Indicates to Spring that it will manage the processes of the FoodController class
     private IFoodRepository repository;
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*") // Allows requests from any origin with any headers (CORS configuration).
+    // @CrossOrigin(origins = "*", allowedHeaders = "*") // Allows requests from any origin with any headers (CORS configuration).
+    @CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*",
+            methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @PostMapping()
     public void saveFood(@RequestBody FoodRequestDTO data){
         Food foodData = new Food(data); // Transforms the FoodRequestDTO into the entity
