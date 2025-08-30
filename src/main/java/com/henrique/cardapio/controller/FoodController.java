@@ -1,6 +1,7 @@
 package com.henrique.cardapio.controller;
 
 import com.henrique.cardapio.food.Food;
+import com.henrique.cardapio.food.FoodResponseDTO;
 import com.henrique.cardapio.food.IFoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class FoodController {
     private IFoodRepository repository;
 
     @GetMapping // Endpoint of this method
-    public List<Food> getAll(){ // Method to return all foods registered in the database
+    public List<FoodResponseDTO> getAll(){ // Method to return all foods registered in the database
         List<Food> foodList = repository.findAll(); // Creates a list that will be used to query food by id
         return foodList;
     }
